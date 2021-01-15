@@ -12,7 +12,7 @@ function Navbar(props) {
   const handleOnClick = () => {
     setActive(!active);
   };
-  const base_app_path = "/main";
+  const base_app_path = "/Budgeting/main";
 
   return (
     <div className="navbar">

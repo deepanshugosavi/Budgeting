@@ -9,16 +9,16 @@ function App(props) {
   return (
     <>
       <Route exact path="/Budgeting/" component={Login} />
-      <Route exact path="/create" component={CreateAccount} />
-      <Route exact path="/main" component={MainScreen} />
+      <Route exact path="/Budgeting/create" component={CreateAccount} />
+      <Route exact path="/Budgeting/main" component={MainScreen} />
       <Route
         exact
-        path="/create-family"
+        path="/Budgeting/create-family"
         component={() => <Family status="create_family" />}
       />
       <Route
         exact
-        path="/join-family"
+        path="/Budgeting/join-family"
         component={() => <Family status="join_family" />}
       />
     </>

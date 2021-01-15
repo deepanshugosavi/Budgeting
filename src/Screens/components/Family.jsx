@@ -58,11 +58,11 @@ function Family(props) {
             placeholder="Enter your password"
           />
           {props.status === "create_family" ? (
-            <Link to="/main">
+            <Link to="/Budgeting/main">
               <button className="family_family__btn">Create Family</button>
             </Link>
           ) : (
-            <Link to="/main">
+            <Link to="/Budgeting/main">
               <button className="family_family__btn">Join Family</button>
             </Link>
           )}

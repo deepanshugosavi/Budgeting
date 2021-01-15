@@ -61,7 +61,7 @@ function Login(props) {
 
           <button className="login__btn">LOGIN</button>
           <div className="or__style">OR</div>
-          <Link to="/create">
+          <Link to="/Budgeting/create">
             <button className="create__btn">Create an Account</button>
           </Link>
         </div>
