@@ -1,0 +1,91 @@
+.global__container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main__container {
+  width: 100%;
+  display: flex;
+  place-content: center;
+}
+
+.family__card {
+  margin-top: 20px;
+  padding-top: 30px;
+  background-color: #393e46;
+  width: 40%;
+  height: 400px;
+  /* box-shadow: 1px 1px grey; */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.family__label {
+  color: white;
+  margin-top: 20px;
+}
+
+.family__heading {
+  font-family: "Josefin Sans", sans-serif;
+
+  font-size: 26px;
+  color: white;
+  text-transform: capitalize;
+  margin-top: 40px;
+  font-family: "Josefin Sans", sans-serif;
+
+  /* display: flex;
+  flex-direction: row; */
+}
+
+.email__icon {
+  margin-right: 10px;
+}
+
+.family__input {
+  padding: 6px 60px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.register__btn {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #2f5c72;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.family_family__btn {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #ffd369;
+  color: black;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .family__card {
+    width: 60%;
+  }
+}
+
+@media (max-width: 550px) {
+  .family__card {
+    width: 80%;
+  }
+  .family__input {
+    padding: 6px 20px;
+  }
+}

@@ -1,0 +1,23 @@
+.header__container {
+  width: 100vw;
+  height: 60px;
+  background-color: #ffd369;
+  display: flex;
+  align-items: flex-end;
+  place-content: center;
+  text-transform: uppercase;
+  color: black;
+  /* box-shadow: 1px 1px grey; */
+
+  /* background-color: #53ffc5; */
+}
+
+.brand__logo {
+  margin-bottom: 10px;
+}
+
+.brand__name {
+  margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
+}
