@@ -8,7 +8,7 @@ import MainScreen from "./Screens/components/MainScreen";
 function App(props) {
   return (
     <>
-      <Route exact path="/" component={Login} />
+      <Route exact path="/Budgeting/" component={Login} />
       <Route exact path="/create" component={CreateAccount} />
       <Route exact path="/main" component={MainScreen} />
       <Route
