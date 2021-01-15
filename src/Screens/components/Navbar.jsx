@@ -33,7 +33,7 @@ function Navbar(props) {
       <nav className={active ? "navbar__active navbar__menu" : "navbar__menu"}>
         <div className="nav_profile">
           <div className="cancel__btn" onClick={handleOnClick}>
-            <AiOutlineClose color="#ffd369" size="30px" />
+            <AiOutlineClose color="#ffac41" size="30px" />
           </div>
           <img
             className="nav_profile_image"

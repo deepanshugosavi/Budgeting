@@ -28,7 +28,7 @@
   align-items: center;
 }
 .login__label {
-  color: #ffd369;
+  color: #ffac41;
   margin-top: 20px;
 }
 
@@ -62,7 +62,7 @@
 .login__btn {
   margin-top: 40px;
   padding: 10px 60px;
-  background-color: #ffd369;
+  background-color: #ffac41;
   color: black;
   font-size: 16px;
   font-weight: bold;
