@@ -14,7 +14,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 .navbar__heading {
   display: flex;
@@ -91,7 +93,8 @@
   height: 100px;
   border-radius: 50%;
   background-size: cover;
-  align-self: center;
+  margin-left: 30px;
+  /* align-self: center; */
   border: none;
 }
 
@@ -106,4 +109,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.nav_menu_item_active {
+  color: white;
 }

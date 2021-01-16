@@ -1,28 +1,27 @@
 import React from "react";
-import { AiFillHome } from "react-icons/ai";
-import { BsFillInboxesFill } from "react-icons/bs";
-import { GoGraph } from "react-icons/go";
-import { FaUserAlt } from "react-icons/fa";
+import { GrTransaction } from "react-icons/gr";
+import { BiAddToQueue } from "react-icons/bi";
+import { BiLogOutCircle, BiHomeSmile } from "react-icons/bi";
 
 export const ScreenData = [
   {
     title: "Home",
-    icon: <AiFillHome />,
+    icon: <BiHomeSmile />,
     path: "/",
   },
   {
-    title: "Products",
-    icon: <BsFillInboxesFill />,
-    path: "/products",
+    title: "Transaction",
+    icon: <GrTransaction />,
+    path: "/transaction",
   },
   {
-    title: "Graphs",
-    icon: <GoGraph />,
-    path: "/graphs",
+    title: "Add Data",
+    icon: <BiAddToQueue />,
+    path: "/add_transaction",
   },
   {
-    title: "User",
-    icon: <FaUserAlt />,
-    path: "/user",
+    title: "Logout",
+    icon: <BiLogOutCircle />,
+    path: "/logout",
   },
 ];

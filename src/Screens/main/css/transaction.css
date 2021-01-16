@@ -1,0 +1,104 @@
+.transaction__container {
+  margin-top: 60px;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+}
+.transaction_list_container {
+  width: 80%;
+  height: 600px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+.transaction_list_item:hover {
+  transform: translate3D(0, -1px, 0) scale(1.03);
+}
+.transaction_list_item {
+  margin-top: 40px;
+  border-radius: 10px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+}
+.transactin_list_item_row1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  /* background-color: rebeccapurple; */
+}
+.transaction_description {
+  display: flex;
+  margin: 10px 60px;
+}
+
+.transaction_item_delete_btn {
+  background-color: red;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+}
+
+.transaction_amount {
+  color: green;
+  font-size: 26px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.transaction_item_description_heading {
+  margin-top: 10px;
+  text-decoration: underline;
+  font-weight: bold;
+  padding-left: 40px;
+  font-size: 24px;
+}
+
+.transaction_item_description_btn:hover {
+  cursor: pointer;
+}
+.transaction_item_description_btn {
+  position: absolute;
+  bottom: -30px;
+  /* background-color: white; */
+}
+
+.transaction_item_description_unactive {
+  display: none;
+}
+.transaction_item_description_active {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .transaction_list_container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .transaction_list_container {
+    width: 80%;
+  }
+  .transaction_list_item {
+    padding: 5px 10px;
+  }
+  .transaction_description {
+    margin: 10px 20px;
+  }
+}
