@@ -1,0 +1,144 @@
+.user__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.user_main_container {
+  width: 90%;
+  background-color: white;
+  display: flex;
+  margin-top: 80px;
+  border-radius: 10px;
+}
+.user_profile_container {
+  border-top-left-radius: 10px;
+  width: 36%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #00000033;
+}
+.user_profile_image_card {
+  position: relative;
+}
+.user_image_camera_icon {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+}
+.user_details_container {
+  width: 60%;
+  padding: 0 2%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.user_profile_image {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  justify-self: center;
+  margin-top: 10px;
+  object-fit: cover;
+}
+.user_full_name {
+  color: black;
+  font-size: 26px;
+  margin-top: 8px;
+}
+.user_username {
+  color: #91969c;
+  margin-top: 2px;
+}
+.user_familyId {
+  color: black;
+  margin-top: 20px;
+}
+
+.user_transaction_details {
+  display: flex;
+  width: 100%;
+}
+
+.user_transaction_number {
+  width: 50%;
+  text-align: center;
+  padding-top: 100px;
+}
+.user_transaction_number span,
+.user_transaction_total_amount span {
+  font-size: 30px;
+  color: red;
+}
+.user_transaction_number div,
+.user_transaction_total_amount div {
+  margin-bottom: 10px;
+}
+.user_transaction_total_amount {
+  width: 50%;
+  text-align: center;
+  padding-top: 100px;
+}
+.user_family_member_heading {
+  margin-left: 10px;
+  font-size: 24px;
+}
+.user_family_members {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.user_family_member_cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.user_family_member_image {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 0px 20px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  object-fit: cover;
+}
+.user_family_member_card {
+  margin: 10px 20px;
+}
+.user_family_member_username {
+  font-size: 14px;
+}
+
+@media (max-width: 650px) {
+  .user_main_container {
+    flex-direction: column;
+  }
+  .user_profile_container {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  .user_details_container {
+    margin-top: 1px;
+    width: 100%;
+    height: 100%;
+  }
+  .user_transaction_total_amount,
+  .user_transaction_number {
+    padding-top: 40px;
+  }
+}

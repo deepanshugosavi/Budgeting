@@ -1,0 +1,89 @@
+.add_transaction_container {
+  width: 100vw;
+  display: flex;
+  place-content: center;
+}
+
+.add_transaction_mid_container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_transaction_card {
+  background-color: white;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 1px 1px black;
+}
+
+#type {
+  background-color: white;
+  height: 26px;
+}
+
+.add_transaction_items {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add_transaction_items input,
+#type {
+  margin: 6px 20px;
+  width: 60%;
+  align-self: center;
+}
+#desc {
+  height: 60px;
+  text-align: center;
+  resize: none;
+  width: 60%;
+  align-self: center;
+}
+
+#amount {
+  height: 26px;
+}
+
+.add_transaction_btn {
+  background-color: #323e41;
+  padding: 6px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.add_transaction_heading {
+  width: 100%;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: black;
+  text-shadow: 1px 1px grey;
+}
+@media (max-width: 400px) {
+  .add_transaction_mid_container {
+    width: 100%;
+  }
+  .add_transaction_card {
+    width: 80%;
+  }
+  .add_transaction_items input,
+  #type,
+  #desc {
+    width: 80%;
+  }
+}

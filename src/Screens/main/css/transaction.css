@@ -5,6 +5,14 @@
   display: flex;
   justify-content: center;
 }
+.transaction_heading {
+  color: white;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+  font-size: 26px;
+}
 .transaction_list_container {
   width: 80%;
   height: 600px;

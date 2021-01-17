@@ -7,7 +7,7 @@ function Home(props) {
     labels: ["January", "February", "March", "April", "May"],
     datasets: [
       {
-        label: "Rainfall",
+        label: "Amount",
         fill: false,
         lineTension: 0.5,
         backgroundColor: "rgba(75,192,192,1)",
@@ -21,7 +21,7 @@ function Home(props) {
     labels: ["January", "February", "March", "April", "May"],
     datasets: [
       {
-        label: "Rainfall",
+        label: "Amount",
         backgroundColor: [
           "#B21F00",
           "#C9DE00",
@@ -49,7 +49,7 @@ function Home(props) {
           options={{
             title: {
               display: true,
-              text: "Average Rainfall per month",
+              text: "Average Budgeting per month",
               fontSize: 20,
             },
             legend: {
@@ -65,7 +65,7 @@ function Home(props) {
           options={{
             title: {
               display: true,
-              text: "Average Rainfall per month",
+              text: "Family Member Expenses",
               fontSize: 20,
             },
             legend: {
@@ -81,7 +81,7 @@ function Home(props) {
           options={{
             title: {
               display: true,
-              text: "Average Rainfall per month",
+              text: "Self Expenses By Category Type",
               fontSize: 20,
             },
             legend: {
@@ -97,7 +97,7 @@ function Home(props) {
           options={{
             title: {
               display: true,
-              text: "Average Rainfall per month",
+              text: "Year Budgeting",
               fontSize: 20,
             },
             legend: {

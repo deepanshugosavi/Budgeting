@@ -23,6 +23,7 @@ function Transaction(props) {
   return (
     <div className="transaction__container">
       <div className="transaction_list_container">
+        <div className="transaction_heading">Transactions</div>
         {arr.map((v, i) => {
           console.log(activeDescription[i]);
           return (
@@ -62,12 +63,9 @@ function Transaction(props) {
                   Description:
                 </div>
                 <div className="transaction_description">
-                  1-T-shirt,2-Chadi 1-T-shirt,2-Chadi
-                  1-T-shirt,2-Chadi1-T-shirt,2-Chadi1-T-shirt,2-Chadi
-                  1-T-shirt,2-Chadi1-T-shirt,2-Chadi1-T-shirt,2-Chadi
-                  1-T-shirt,2-Chadi1-T-shirt,2-Chadi1-T-shirt,2-Chadi
-                  1-T-shirt,2-Chadi1-T-shirt,2-Chadi1-T-shirt,2-Chadi
-                  1-T-shirt,2-Chadi1-T-shirt,2-Chadi1-T-shirt,2-Chadi
+                  1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt
+                  1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt
+                  1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt 1-T-shirt
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@
 .home__box3,
 .home__box4 {
   background-color: white;
-  width: 460px;
+  width: 44%;
   height: 300px;
   margin: 20px 20px;
   /* box-shadow: 1px 1px black; */
@@ -28,6 +28,15 @@
 .home__box3:hover,
 .home__box4:hover {
   transform: scale(1.05, 1.05);
+}
+@media (max-width: 700px) {
+  .home__box1,
+  .home__box2,
+  .home__box3,
+  .home__box4 {
+    width: 80%;
+    height: 260px;
+  }
 }
 @media (max-width: 500px) {
   .home__box1,
