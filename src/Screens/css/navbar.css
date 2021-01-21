@@ -96,6 +96,7 @@
   margin-left: 30px;
   /* align-self: center; */
   border: none;
+  object-fit: cover;
 }
 
 .nav_username {

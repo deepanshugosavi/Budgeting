@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Redirect } from "react-router-dom";
 import { ScreenData } from "../ScreenData";
 import "../css/navbar.css";
 import { GiTakeMyMoney } from "react-icons/gi";
 
 function Navbar(props) {
   const [active, setActive] = useState(false);
+  const [state, setState] = useState({
+    user_hash: localStorage.getItem("user_hash"),
+    image_url: localStorage.getItem("image_url"),
+    user_name: localStorage.getItem("user_name"),
+  });
 
   const handleOnClick = () => {
     setActive(!active);
   };
   const base_app_path = "/Budgeting/main";
+
+  if (state.user_hash === null) return <Redirect to="/Budgeting" />;
 
   return (
     <div className="navbar">
@@ -38,13 +45,33 @@ function Navbar(props) {
           <Link to="/Budgeting/main/user">
             <img
               className="nav_profile_image"
-              src="https://instagram.fbom12-1.fna.fbcdn.net/v/t51.2885-19/s320x320/44377325_265856334115493_7888223780072325120_n.jpg?_nc_ht=instagram.fbom12-1.fna.fbcdn.net&_nc_ohc=Czi0fqP2tAEAX_0ql0K&tp=1&oh=9e289aecc9f662816548d36314dd1737&oe=602B6CE4"
+              src={
+                state.image_url === ""
+                  ? "https://img.favpng.com/2/24/0/computer-icons-avatar-user-profile-png-favpng-HPjiNes3x112h0jw38sbfpDY9.jpg"
+                  : state.image_url
+              }
               alt="profile-image"
             />
-            <div className="nav_username">@deepanshugosavi</div>
+            <div className="nav_username">@{state.user_name}</div>
           </Link>
         </div>
         {ScreenData.map((v, i) => {
+          if (v.title === "Logout")
+            return (
+              <div
+                className="menu__item"
+                key={i}
+                onClick={() => {
+                  localStorage.clear();
+                  setState({
+                    user_hash: localStorage.getItem("user_hash"),
+                  });
+                }}
+              >
+                <div className="menu__icon"> {v.icon} </div>
+                <div className="menu__title">{v.title}</div>
+              </div>
+            );
           return (
             <NavLink
               activeClassName={

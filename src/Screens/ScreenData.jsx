@@ -22,6 +22,6 @@ export const ScreenData = [
   {
     title: "Logout",
     icon: <BiLogOutCircle />,
-    path: "/logout",
+    path: "/",
   },
 ];
