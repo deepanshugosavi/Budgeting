@@ -5,9 +5,9 @@
 }
 
 .add_transaction_mid_container {
-  width: 60%;
+  width: 80%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -21,13 +21,15 @@
   align-items: center;
   margin-top: 80px;
   margin-bottom: 20px;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 1px 1px black;
+  margin-left: 40px;
 }
 
 #type {
   background-color: white;
   height: 26px;
+  text-transform: capitalize;
 }
 
 .add_transaction_items {
@@ -43,13 +45,21 @@
   margin: 6px 20px;
   width: 60%;
   align-self: center;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  border-bottom: 2px solid #ffac41;
 }
 #desc {
   height: 60px;
-  text-align: center;
+  text-align: start;
   resize: none;
   width: 60%;
+  font-family: "Josefin Sans", sans-serif;
   align-self: center;
+  border: none;
+  font-size: 18px;
+  border-bottom: 2px solid #ffac41;
 }
 
 #amount {
@@ -57,11 +67,12 @@
 }
 
 .add_transaction_btn {
-  background-color: #323e41;
-  padding: 6px 20px;
+  background-color: green;
+  padding: 8px 40px;
   border-radius: 10px;
   color: white;
   font-weight: bold;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 .add_transaction_heading {
@@ -69,10 +80,16 @@
   margin-top: 20px;
   text-transform: uppercase;
   font-size: 24px;
+  font-weight: bold;
   text-align: center;
   margin-bottom: 10px;
   color: black;
-  text-shadow: 1px 1px grey;
+  /* text-shadow: 1px 1px grey; */
+}
+label {
+  color: black;
+  font-size: 20px;
+  text-transform: capitalize;
 }
 @media (max-width: 400px) {
   .add_transaction_mid_container {

@@ -7,9 +7,11 @@ import Lottie from "react-lottie";
 import animationData from ".././mango-family.json";
 import useWindowSize from "../../hooks/WindowsSize";
 import axios from "axios";
+import Loading from "../Loading";
 
 function Family(props) {
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const [state, setState] = useState({
     user_data: JSON.parse(localStorage.getItem("user_data")),
     errorMessages: null,
@@ -41,6 +43,7 @@ function Family(props) {
         errorMessages: "Family Name/Password is too small",
       });
     } else {
+      setLoading(true);
       axios
         .post("http://127.0.0.1:8000/register", {
           fullname: state.user_data["fullName"],
@@ -68,8 +71,12 @@ function Family(props) {
           } else {
             setState({ ...state, errorMessages: res.data["result"] });
           }
+          setLoading(false);
         })
-        .catch((e) => setState({ ...state, errorMessages: e.toString() }));
+        .catch((e) => {
+          setLoading(false);
+          setState({ ...state, errorMessages: e.toString() });
+        });
     }
   };
 
@@ -80,6 +87,7 @@ function Family(props) {
         errorMessages: "Family Name/Password is too small",
       });
     } else {
+      setLoading(true);
       axios
         .post("http://127.0.0.1:8000/register", {
           fullname: state.user_data["fullName"],
@@ -107,78 +115,90 @@ function Family(props) {
           } else {
             setState({ ...state, errorMessages: res.data["result"] });
           }
+          setLoading(false);
         })
-        .catch((e) => setState({ ...state, errorMessages: e.toString() }));
+        .catch((e) => {
+          setLoading(false);
+          setState({ ...state, errorMessages: e.toString() });
+        });
     }
   };
   if (state.user_data === null) return <Redirect to="/Budgeting" />;
   return (
     <div className="global__container">
       <BrandingHeader />
-      <div className="main__container">
-        {size.width > 700 ? (
-          <div>
-            <Lottie options={defaultOptions} height={350} width={400} />
-          </div>
-        ) : (
-          <></>
-        )}
-        <div className="family__card">
-          <label className="family__label" htmlFor="family_username">
-            <RiQuillPenFill className="email__icon" color="white" size="20px" />
-            <span>Family Name</span>
-          </label>
-          <input
-            className="family__input"
-            id="family_name"
-            type="text"
-            value={familyName}
-            onChange={handleFamilyName}
-            placeholder="Enter your fullname"
-          />
-
-          <label className="family__label" htmlFor="family_password">
-            <RiLockPasswordFill
-              className="email__icon"
-              color="white"
-              size="22px"
-            />
-            <span> Family Key</span>
-          </label>
-          <input
-            className="family__input"
-            id="family_password"
-            type="password"
-            value={familyKey}
-            onChange={handleFamilyKey}
-            placeholder="Enter your password"
-          />
-          {state.errorMessages ? (
-            <p
-              className="validation"
-              style={{
-                color: "red",
-                marginTop: "30px",
-                fontSize: "18px",
-                textTransform: "capitalize",
-              }}
-            >
-              *{state.errorMessages}
-            </p>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="main__container">
+          {size.width > 700 ? (
+            <div>
+              <Lottie options={defaultOptions} height={350} width={400} />
+            </div>
           ) : (
             <></>
           )}
-          {props.status === "create_family" ? (
-            <button className="family_family__btn" onClick={handleCreate}>
-              Create Family
-            </button>
-          ) : (
-            <button className="family_family__btn" onClick={handleJoin}>
-              Join Family
-            </button>
-          )}
+          <div className="family__card">
+            <label className="family__label" htmlFor="family_username">
+              <RiQuillPenFill
+                className="email__icon"
+                color="white"
+                size="20px"
+              />
+              <span>Family Name</span>
+            </label>
+            <input
+              className="family__input"
+              id="family_name"
+              type="text"
+              value={familyName}
+              onChange={handleFamilyName}
+              placeholder="Enter your fullname"
+            />
+
+            <label className="family__label" htmlFor="family_password">
+              <RiLockPasswordFill
+                className="email__icon"
+                color="white"
+                size="22px"
+              />
+              <span> Family Key</span>
+            </label>
+            <input
+              className="family__input"
+              id="family_password"
+              type="password"
+              value={familyKey}
+              onChange={handleFamilyKey}
+              placeholder="Enter your password"
+            />
+            {state.errorMessages ? (
+              <p
+                className="validation"
+                style={{
+                  color: "red",
+                  marginTop: "30px",
+                  fontSize: "18px",
+                  textTransform: "capitalize",
+                }}
+              >
+                *{state.errorMessages}
+              </p>
+            ) : (
+              <></>
+            )}
+            {props.status === "create_family" ? (
+              <button className="family_family__btn" onClick={handleCreate}>
+                Create Family
+              </button>
+            ) : (
+              <button className="family_family__btn" onClick={handleJoin}>
+                Join Family
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

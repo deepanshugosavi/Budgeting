@@ -5,12 +5,14 @@ import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill, RiQuillPenFill } from "react-icons/ri";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import Loading from "../Loading";
 
 function CreateAccount(props) {
   const history = useHistory();
   const [state, setState] = useState({
     errorMessages: null,
   });
+  const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -34,6 +36,7 @@ function CreateAccount(props) {
       setState({ errorMessages: "username is too small" });
     else {
       setState({ errorMessages: null });
+      setLoading(true);
       axios
         .post("http://127.0.0.1:8000/check_username", { userName: username })
         .then((res) => {
@@ -79,80 +82,94 @@ function CreateAccount(props) {
           } else {
             setState({ errorMessages: res.data["result"] });
           }
+          setLoading(false);
         })
-        .catch((e) => setState({ errorMessages: e.toString() }));
+        .catch((e) => {
+          setLoading(false);
+          setState({
+            errorMessages: e.toString(),
+          });
+        });
     }
   };
   return (
     <div className="global__container">
       <BrandingHeader />
-      <div className="main__container">
-        <div className="create__card">
-          <label className="create__label" htmlFor="create_username">
-            <RiQuillPenFill className="email__icon" color="white" size="20px" />
-            <span> Full Name</span>
-          </label>
-          <input
-            className="create__input"
-            type="text"
-            placeholder="Enter your fullname"
-            onChange={fullNameHandler}
-            value={fullName}
-          />
-          <label className="create__label" htmlFor="create_username">
-            <FaUser className="email__icon" color="white" size="20px" />
-            <span> Username</span>
-          </label>
-          <input
-            className="create__input"
-            type="text"
-            placeholder="Enter your username"
-            onChange={usernameHandler}
-            value={username}
-          />
-          <label className="create__label" htmlFor="create_password">
-            <RiLockPasswordFill
-              className="email__icon"
-              color="white"
-              size="22px"
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="main__container">
+          <div className="create__card">
+            <label className="create__label" htmlFor="create_username">
+              <RiQuillPenFill
+                className="email__icon"
+                color="white"
+                size="20px"
+              />
+              <span> Full Name</span>
+            </label>
+            <input
+              className="create__input"
+              type="text"
+              placeholder="Enter your fullname"
+              onChange={fullNameHandler}
+              value={fullName}
             />
-            <span> Password</span>
-          </label>
-          <input
-            className="create__input"
-            type="password"
-            placeholder="Enter your password"
-            onChange={passwordHandler}
-            value={password}
-            onClick={handleUsernameCheck}
-          />
-          {state.errorMessages ? (
-            <p
-              className="validation"
-              style={{
-                color: "red",
-                marginTop: "30px",
-                fontSize: "18px",
-                textTransform: "capitalize",
-              }}
-            >
-              *{state.errorMessages}
-            </p>
-          ) : (
-            <></>
-          )}
+            <label className="create__label" htmlFor="create_username">
+              <FaUser className="email__icon" color="white" size="20px" />
+              <span> Username</span>
+            </label>
+            <input
+              className="create__input"
+              type="text"
+              placeholder="Enter your username"
+              onChange={usernameHandler}
+              value={username}
+            />
+            <label className="create__label" htmlFor="create_password">
+              <RiLockPasswordFill
+                className="email__icon"
+                color="white"
+                size="22px"
+              />
+              <span> Password</span>
+            </label>
+            <input
+              className="create__input"
+              type="password"
+              placeholder="Enter your password"
+              onChange={passwordHandler}
+              value={password}
+              onClick={handleUsernameCheck}
+            />
+            {state.errorMessages ? (
+              <p
+                className="validation"
+                style={{
+                  color: "red",
+                  marginTop: "30px",
+                  fontSize: "18px",
+                  textTransform: "capitalize",
+                }}
+              >
+                *{state.errorMessages}
+              </p>
+            ) : (
+              <></>
+            )}
 
-          <button className="create_family__btn" onClick={BtnHandler}>
-            Create New Family
-          </button>
+            <button className="create_family__btn" onClick={BtnHandler}>
+              Create New Family
+            </button>
 
-          <div className="or__style">OR</div>
+            <div className="or__style">OR</div>
 
-          <button className="join_family__btn" onClick={BtnHandler}>
-            Join Existing Family
-          </button>
+            <button className="join_family__btn" onClick={BtnHandler}>
+              Join Existing Family
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -8,6 +8,7 @@ import Lottie from "react-lottie";
 import animationData from "../welcome.json";
 import useWindowSize from "../../hooks/WindowsSize";
 import axios from "axios";
+import Loading from "../Loading";
 
 function Login(props) {
   const size = useWindowSize();
@@ -15,6 +16,7 @@ function Login(props) {
     loginStatus: localStorage.getItem("user_hash"),
     errorMessages: null,
   });
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,6 +38,7 @@ function Login(props) {
   };
   const loginHandler = () => {
     if (username !== "" && password !== "") {
+      setLoading(true);
       axios
         .post("http://127.0.0.1:8000/login", {
           username: username,
@@ -71,73 +74,77 @@ function Login(props) {
   };
 
   if (state.loginStatus !== null) return <Redirect to="/Budgeting/main" />;
+
   return (
     <div className="global__container">
       <BrandingHeader />
-
-      <div className="main__container">
-        {size.width > 700 ? (
-          <div className="welcome__animation">
-            <Lottie options={defaultOptions} height={400} width={400} />
-          </div>
-        ) : (
-          <></>
-        )}
-
-        <div className="login__card">
-          <label className="login__label" htmlFor="login_username">
-            <FaUser className="email__icon" color="white" size="20px" />
-            <span> Username</span>
-          </label>
-          <input
-            className="login__input"
-            id="login_username"
-            type="text"
-            placeholder="Enter your username"
-            value={username}
-            onChange={usernameHandler}
-          />
-          <label className="login__label" htmlFor="login_password">
-            <RiLockPasswordFill
-              className="email__icon"
-              color="white"
-              size="22px"
-            />
-            <span> Password</span>
-          </label>
-          <input
-            className="login__input"
-            id="login_password"
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={passwordHandler}
-          />
-          {state.errorMessages ? (
-            <p
-              className="validation"
-              style={{
-                color: "red",
-                marginTop: "30px",
-                fontSize: "18px",
-                textTransform: "capitalize",
-              }}
-            >
-              *{state.errorMessages}
-            </p>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="main__container">
+          {size.width > 700 ? (
+            <div className="welcome__animation">
+              <Lottie options={defaultOptions} height={400} width={400} />
+            </div>
           ) : (
             <></>
           )}
 
-          <button className="login__btn" onClick={loginHandler}>
-            LOGIN
-          </button>
-          <div className="or__style">OR</div>
-          <Link to="/Budgeting/create">
-            <button className="create__btn">Create an Account</button>
-          </Link>
+          <div className="login__card">
+            <label className="login__label" htmlFor="login_username">
+              <FaUser className="email__icon" color="white" size="20px" />
+              <span> Username</span>
+            </label>
+            <input
+              className="login__input"
+              id="login_username"
+              type="text"
+              placeholder="Enter your username"
+              value={username}
+              onChange={usernameHandler}
+            />
+            <label className="login__label" htmlFor="login_password">
+              <RiLockPasswordFill
+                className="email__icon"
+                color="white"
+                size="22px"
+              />
+              <span> Password</span>
+            </label>
+            <input
+              className="login__input"
+              id="login_password"
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={passwordHandler}
+            />
+            {state.errorMessages ? (
+              <p
+                className="validation"
+                style={{
+                  color: "red",
+                  marginTop: "30px",
+                  fontSize: "18px",
+                  textTransform: "capitalize",
+                }}
+              >
+                *{state.errorMessages}
+              </p>
+            ) : (
+              <></>
+            )}
+
+            <button className="login__btn" onClick={loginHandler}>
+              LOGIN
+            </button>
+            <div className="or__style">OR</div>
+            <Link to="/Budgeting/create">
+              <button className="create__btn">Create an Account</button>
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

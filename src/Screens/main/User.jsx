@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./css/user.css";
 import { MdCamera } from "react-icons/md";
 import axios from "axios";
+import Loading from "../Loading";
 
 function User(props) {
   const [user, setUser] = useState(null);
   const [family, setFamily] = useState([]);
   useEffect(() => {
+    setUser("loading");
     axios
       .get(
         `http://127.0.0.1:8000/get_user_profile?userName=${localStorage.getItem(
@@ -22,6 +24,7 @@ function User(props) {
       })
       .catch((e) => console.log(e));
   }, []);
+  if (user === "loading") return <Loading />;
   if (user !== null)
     return (
       <div className="user__container">

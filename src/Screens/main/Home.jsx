@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./css/home.css";
 import { Pie, Bar, Line } from "react-chartjs-2";
 
 function Home(props) {
+  useEffect(() => {}, []);
   const selfLineChart = {
     labels: ["January", "February", "March", "April", "May"],
     datasets: [

@@ -43,15 +43,17 @@ function Navbar(props) {
             <AiOutlineClose color="#ffac41" size="30px" />
           </div>
           <Link to="/Budgeting/main/user">
-            <img
-              className="nav_profile_image"
-              src={
-                state.image_url === ""
-                  ? "https://img.favpng.com/2/24/0/computer-icons-avatar-user-profile-png-favpng-HPjiNes3x112h0jw38sbfpDY9.jpg"
-                  : state.image_url
-              }
-              alt="profile-image"
-            />
+            <div className="nav_profile_image_container">
+              <img
+                className="nav_profile_image"
+                src={
+                  state.image_url === ""
+                    ? "https://img.favpng.com/2/24/0/computer-icons-avatar-user-profile-png-favpng-HPjiNes3x112h0jw38sbfpDY9.jpg"
+                    : state.image_url
+                }
+                alt="profile-image"
+              />
+            </div>
             <div className="nav_username">@{state.user_name}</div>
           </Link>
         </div>
