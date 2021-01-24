@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/add_transaction.css";
 import Lottie from "react-lottie";
-import animationSideData from "./../money-growth.json";
+import animationSideData from "./../transaction.json";
 import animationLoadingData from "./../loading-dots-in-yellow.json";
 import animationDoneData from "./../tick-pop.json";
 import axios from "axios";

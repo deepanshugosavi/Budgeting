@@ -50,7 +50,7 @@ function Login(props) {
             res.data["result"] === "invalid password" ||
             res.data["result"] === "invalid username"
           )
-            setState({ errorMessages: res.data["result"] });
+            setState({ ...state, errorMessages: res.data["result"] });
           if (res.data["result"] === "Login Success") {
             localStorage.setItem(
               "user_hash",
@@ -63,13 +63,17 @@ function Login(props) {
               "family_name",
               res.data["payload"]["family_name"]
             );
-            setState({ errorMessages: res.data["result"] });
+            setState({
+              ...state,
+              loginStatus: res.data["result"],
+            });
           }
+          setLoading(false);
         })
         .catch((e) => {
-          setState({ errorMessages: e.toString() });
+          setState({ ...state, errorMessages: e.toString() });
+          setLoading(false);
         });
-      // setState({ errorMessages: "something went wrong" });
     }
   };
 

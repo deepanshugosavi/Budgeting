@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./css/user.css";
 import { MdCamera } from "react-icons/md";
 import axios from "axios";
 import Loading from "../Loading";
 
 function User(props) {
+  const inputRef = useRef(null);
   const [user, setUser] = useState(null);
   const [family, setFamily] = useState([]);
   useEffect(() => {
@@ -24,10 +25,50 @@ function User(props) {
       })
       .catch((e) => console.log(e));
   }, []);
+
+  const picUploaderHanlder = (event) => {
+    const imageFile = event.target.files[0];
+    let filename = imageFile.name;
+    let fileExtension =
+      filename.substring(filename.lastIndexOf(".") + 1, filename.length) ||
+      filename;
+
+    if (!imageFile.name.match(/\.(jpg|jpeg|png|gif|jfif)$/)) {
+      alert("Please select valid image.");
+      return false;
+    }
+    const fd = new FormData();
+    fd.append(
+      "file",
+      imageFile,
+      localStorage.getItem("user_name") + "." + fileExtension
+    );
+    setUser("loading");
+    axios
+      .post("http://127.0.0.1:8000/profile_image", fd)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data["result"] === "success") {
+          localStorage.setItem("image_url", res.data["image_url"]);
+        }
+        window.location.reload();
+      })
+      .catch((e) => {
+        console.log(e);
+        window.location.reload();
+      });
+  };
+
   if (user === "loading") return <Loading />;
   if (user !== null)
     return (
       <div className="user__container">
+        <input
+          style={{ display: "none" }}
+          ref={inputRef}
+          type="file"
+          onChange={picUploaderHanlder}
+        />
         <div className="user_main_container">
           <div className="user_profile_container">
             <div className="user_profile_image_card">
@@ -40,7 +81,13 @@ function User(props) {
                 alt=""
                 className="user_profile_image"
               />
-              <MdCamera className="user_image_camera_icon" size="40px" />
+              <MdCamera
+                className="user_image_camera_icon"
+                size="40px"
+                onClick={() => {
+                  inputRef.current.click();
+                }}
+              />
             </div>
             <div className="user_full_name">{user["full_name"]}⭐</div>
             <div className="user_username">@{user["user_name"]}</div>
