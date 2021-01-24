@@ -92,7 +92,11 @@
   margin-top: 20px;
   padding-top: 10px;
 }
-
+.transaction_category {
+  text-transform: capitalize;
+  color: red;
+  font-size: 24px;
+}
 @media (max-width: 600px) {
   .transaction_list_container {
     width: 100%;

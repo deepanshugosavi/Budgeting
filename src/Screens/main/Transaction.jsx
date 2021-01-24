@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./css/transaction.css";
-import { GiClothes } from "react-icons/gi";
-import { AiFillDownCircle } from "react-icons/ai";
+import { BsFillHouseFill } from "react-icons/bs";
+import { AiFillDownCircle, AiFillCar, AiFillMedicineBox } from "react-icons/ai";
+import {
+  GiCommercialAirplane,
+  GiLipstick,
+  GiPayMoney,
+  GiElectric,
+  GiWaterDrop,
+  GiDropEarrings,
+  GiClothes,
+} from "react-icons/gi";
+import { FaGraduationCap, FaMobileAlt, FaShoppingCart } from "react-icons/fa";
+import { MdDevicesOther } from "react-icons/md";
 import { IoIosArrowUp } from "react-icons/io";
+import { IoFastFoodSharp } from "react-icons/io5";
 import axios from "axios";
 import Loading from "../Loading";
 
@@ -90,7 +102,37 @@ function Transaction(props) {
               return (
                 <div className="transaction_list_item">
                   <div className="transactin_list_item_row1">
-                    <GiClothes size="40px" />
+                    {v["type"] === "gadgets" ? (
+                      <MdDevicesOther size="40px" />
+                    ) : v["type"] === "travelling" ? (
+                      <GiCommercialAirplane size="30px" />
+                    ) : v["type"] === "vehicle" ? (
+                      <AiFillCar size="40px" />
+                    ) : v["type"] === "education" ? (
+                      <FaGraduationCap size="40px" />
+                    ) : v["type"] === "medicines" ? (
+                      <AiFillMedicineBox size="40px" />
+                    ) : v["type"] === "cosmetics" ? (
+                      <GiLipstick size="40px" />
+                    ) : v["type"] === "tax" ? (
+                      <GiPayMoney size="40px" />
+                    ) : v["type"] === "electric bill" ? (
+                      <GiElectric size="40px" />
+                    ) : v["type"] === "water bill" ? (
+                      <GiWaterDrop size="40px" />
+                    ) : v["type"] === "recharge" ? (
+                      <FaMobileAlt size="40px" />
+                    ) : v["type"] === "jewellery" ? (
+                      <GiDropEarrings size="40px" />
+                    ) : v["type"] === "cloths" ? (
+                      <GiClothes size="40px" />
+                    ) : v["type"] === "food" ? (
+                      <IoFastFoodSharp size="30px" />
+                    ) : v["type"] === "house" ? (
+                      <BsFillHouseFill size="40px" />
+                    ) : (
+                      <FaShoppingCart />
+                    )}
                     <div className="transaction_category">{v["type"]}</div>
                     <div className="transaction_data_time">{dt}</div>
                     <div className="transaction_item_description_btn">
