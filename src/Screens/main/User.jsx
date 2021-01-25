@@ -12,7 +12,7 @@ function User(props) {
     setUser("loading");
     axios
       .get(
-        `http://127.0.0.1:8000/get_user_profile?userName=${localStorage.getItem(
+        `https://whispering-fjord-28264.herokuapp.com/get_user_profile?userName=${localStorage.getItem(
           "user_name"
         )}&userPassword=${localStorage.getItem("user_hash")}`
       )
@@ -45,7 +45,7 @@ function User(props) {
     );
     setUser("loading");
     axios
-      .post("http://127.0.0.1:8000/profile_image", fd)
+      .post("https://whispering-fjord-28264.herokuapp.com/profile_image", fd)
       .then((res) => {
         console.log(res.data);
         if (res.data["result"] === "success") {

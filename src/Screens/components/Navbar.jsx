@@ -17,9 +17,9 @@ function Navbar(props) {
   const handleOnClick = () => {
     setActive(!active);
   };
-  const base_app_path = "/Budgeting/main";
+  const base_app_path = "/main";
 
-  if (state.user_hash === null) return <Redirect to="/Budgeting" />;
+  if (state.user_hash === null) return <Redirect to="/" />;
 
   return (
     <div className="navbar">
@@ -42,7 +42,7 @@ function Navbar(props) {
           <div className="cancel__btn" onClick={handleOnClick}>
             <AiOutlineClose color="#ffac41" size="30px" />
           </div>
-          <Link to="/Budgeting/main/user">
+          <Link to="/main/user">
             <div className="nav_profile_image_container">
               <img
                 className="nav_profile_image"

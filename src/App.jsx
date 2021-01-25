@@ -8,36 +8,36 @@ import MainScreen from "./Screens/components/MainScreen";
 function App(props) {
   return (
     <Switch>
-      <Route exact path="/Budgeting/" component={Login} />
-      <Route exact path="/Budgeting/create" component={CreateAccount} />
+      <Route exact path="/" component={Login} />
+      <Route exact path="/create" component={CreateAccount} />
       <Route
         exact
-        path="/Budgeting/main"
+        path="/main"
         component={() => <MainScreen screen_name="home" />}
       />
       <Route
         exact
-        path="/Budgeting/main/transaction"
+        path="/main/transaction"
         component={() => <MainScreen screen_name="transaction" />}
       />
       <Route
         exact
-        path="/Budgeting/main/add_transaction"
+        path="/main/add_transaction"
         component={() => <MainScreen screen_name="add_transaction" />}
       />
       <Route
         exact
-        path="/Budgeting/main/user"
+        path="/main/user"
         component={() => <MainScreen screen_name="user" />}
       />
       <Route
         exact
-        path="/Budgeting/create-family"
+        path="/create-family"
         component={() => <Family status="create_family" />}
       />
       <Route
         exact
-        path="/Budgeting/join-family"
+        path="/join-family"
         component={() => <Family status="join_family" />}
       />
     </Switch>

@@ -3,7 +3,7 @@ import "../css/createaccount.css";
 import BrandingHeader from "./BrandingHeader";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill, RiQuillPenFill } from "react-icons/ri";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading";
 
@@ -38,7 +38,9 @@ function CreateAccount(props) {
       setState({ errorMessages: null });
       setLoading(true);
       axios
-        .post("http://127.0.0.1:8000/check_username", { userName: username })
+        .post("https://whispering-fjord-28264.herokuapp.com/check_username", {
+          userName: username,
+        })
         .then((res) => {
           console.log(res.data["result"]);
           if (res.data["result"] === "correct username") {
@@ -58,7 +60,7 @@ function CreateAccount(props) {
                     wants: "join",
                   })
                 );
-                history.push("/Budgeting/join-family");
+                history.push("/join-family");
               }
             } else {
               if (fullName.length < 6 || password.length < 6) {
@@ -76,7 +78,7 @@ function CreateAccount(props) {
                   })
                 );
 
-                history.push("/Budgeting/create-family");
+                history.push("/create-family");
               }
             }
           } else {

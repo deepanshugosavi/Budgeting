@@ -26,7 +26,7 @@ function Transaction(props) {
     setLoading(true);
     axios
       .get(
-        `http://127.0.0.1:8000/get_user_transaction?userName=${localStorage.getItem(
+        `https://whispering-fjord-28264.herokuapp.com/get_user_transaction?userName=${localStorage.getItem(
           "user_name"
         )}&userPassword=${localStorage.getItem("user_hash")}`
       )

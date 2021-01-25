@@ -49,7 +49,7 @@ function AddTransaction(props) {
   };
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/expenses_type")
+      .get("https://whispering-fjord-28264.herokuapp.com/expenses_type")
       .then((res) => {
         console.log(res.data);
         setType(res.data);
@@ -70,7 +70,7 @@ function AddTransaction(props) {
       setState({ errorMessages: null });
       setBtnState("loading");
       axios
-        .post("http://127.0.0.1:8000/transaction", {
+        .post("https://whispering-fjord-28264.herokuapp.com/transaction", {
           amount: amount,
           date_time: data_time,
           type: selectedType,

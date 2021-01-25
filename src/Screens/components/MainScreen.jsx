@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
 import AddTransaction from "../main/AddTransaction";
 import Home from "../main/Home";
 import Transaction from "../main/Transaction";

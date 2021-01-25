@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../css/login.css";
 import BrandingHeader from "./BrandingHeader";
 import { FaUser } from "react-icons/fa";
@@ -40,7 +40,7 @@ function Login(props) {
     if (username !== "" && password !== "") {
       setLoading(true);
       axios
-        .post("http://127.0.0.1:8000/login", {
+        .post("https://whispering-fjord-28264.herokuapp.com/login", {
           username: username,
           password: password,
         })
@@ -77,7 +77,7 @@ function Login(props) {
     }
   };
 
-  if (state.loginStatus !== null) return <Redirect to="/Budgeting/main" />;
+  if (state.loginStatus !== null) return <Redirect to="/main" />;
 
   return (
     <div className="global__container">
@@ -143,7 +143,7 @@ function Login(props) {
               LOGIN
             </button>
             <div className="or__style">OR</div>
-            <Link to="/Budgeting/create">
+            <Link to="/create">
               <button className="create__btn">Create an Account</button>
             </Link>
           </div>

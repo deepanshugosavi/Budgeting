@@ -6,15 +6,26 @@ import axios from "axios";
 function Home(props) {
   const [userData, setUserData] = useState([]);
   const [familyData, setFamilyData] = useState([]);
-  const [categoryAmount, setCategoryAmount] = useState({});
-  const [familyAmount, setFamilyAmount] = useState({});
-  const [dailyAmount, setDailyAmount] = useState({});
+  const [categoryAmount, setCategoryAmount] = useState({
+    category: [],
+    amount: [],
+    color: [],
+  });
+  const [familyAmount, setFamilyAmount] = useState({
+    member_name: [],
+    amount: [],
+    color: [],
+  });
+  const [dailyAmount, setDailyAmount] = useState({
+    date: [],
+    amount: [],
+  });
   const [monthAmount, setMonthAmount] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `http://127.0.0.1:8000/get_user_transaction?userName=${localStorage.getItem(
+        `https://whispering-fjord-28264.herokuapp.com/get_user_transaction?userName=${localStorage.getItem(
           "user_name"
         )}&userPassword=${localStorage.getItem("user_hash")}`
       )
@@ -263,64 +274,52 @@ function Home(props) {
   return (
     <div className="home__container">
       <div className="home__box1">
-        {userData.length === 0 ? (
-          "--NO DATA--"
-        ) : (
-          <Line
-            data={selfDailyExpenses}
-            options={{
-              title: {
-                display: true,
-                text: "Last 7 Days Expenses",
-                fontSize: 20,
-              },
-              legend: {
-                display: true,
-                position: "bottom",
-              },
-            }}
-          />
-        )}
+        <Line
+          data={selfDailyExpenses}
+          options={{
+            title: {
+              display: true,
+              text: "Last 7 Days Expenses",
+              fontSize: 20,
+            },
+            legend: {
+              display: true,
+              position: "bottom",
+            },
+          }}
+        />
       </div>
       <div className="home__box2">
-        {familyData.length === 0 ? (
-          "--NO DATA--"
-        ) : (
-          <Pie
-            data={familyMemberExpenses}
-            options={{
-              title: {
-                display: true,
-                text: "Family Member Expenses",
-                fontSize: 20,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
-        )}
+        <Pie
+          data={familyMemberExpenses}
+          options={{
+            title: {
+              display: true,
+              text: "Family Member Expenses",
+              fontSize: 20,
+            },
+            legend: {
+              display: true,
+              position: "right",
+            },
+          }}
+        />
       </div>
       <div className="home__box3">
-        {userData.length === 0 ? (
-          "--NO DATA--"
-        ) : (
-          <Pie
-            data={selfExpensesByCategory}
-            options={{
-              title: {
-                display: true,
-                text: "Self Expenses By Category Type",
-                fontSize: 20,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
-        )}
+        <Pie
+          data={selfExpensesByCategory}
+          options={{
+            title: {
+              display: true,
+              text: "Self Expenses By Category Type",
+              fontSize: 20,
+            },
+            legend: {
+              display: true,
+              position: "right",
+            },
+          }}
+        />
       </div>
       <div className="home__box4">
         <Bar

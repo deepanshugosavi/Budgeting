@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/family.css";
 import BrandingHeader from "./BrandingHeader";
 import { RiLockPasswordFill, RiQuillPenFill } from "react-icons/ri";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import Lottie from "react-lottie";
 import animationData from ".././mango-family.json";
 import useWindowSize from "../../hooks/WindowsSize";
@@ -45,7 +45,7 @@ function Family(props) {
     } else {
       setLoading(true);
       axios
-        .post("http://127.0.0.1:8000/register", {
+        .post("https://whispering-fjord-28264.herokuapp.com/register", {
           fullname: state.user_data["fullName"],
           username: state.user_data["username"],
           password: state.user_data["password"],
@@ -89,7 +89,7 @@ function Family(props) {
     } else {
       setLoading(true);
       axios
-        .post("http://127.0.0.1:8000/register", {
+        .post("https://whispering-fjord-28264.herokuapp.com/register", {
           fullname: state.user_data["fullName"],
           username: state.user_data["username"],
           password: state.user_data["password"],
@@ -111,7 +111,7 @@ function Family(props) {
               "family_name",
               res.data["payload"]["family_name"]
             );
-            history.push("/Budgeting/main");
+            history.push("/main");
           } else {
             setState({ ...state, errorMessages: res.data["result"] });
           }
@@ -123,7 +123,7 @@ function Family(props) {
         });
     }
   };
-  if (state.user_data === null) return <Redirect to="/Budgeting" />;
+  if (state.user_data === null) return <Redirect to="/" />;
   return (
     <div className="global__container">
       <BrandingHeader />
