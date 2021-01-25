@@ -58,7 +58,7 @@ function Transaction(props) {
 
   const handleDelete = (index) => {
     axios
-      .post("http://127.0.0.1:8000/delete_transaction", {
+      .post("https://whispering-fjord-28264.herokuapp.com/delete_transaction", {
         transactionID: transactionList[index]["transaction_id"],
       })
       .then((res) => {

@@ -327,7 +327,7 @@ function Home(props) {
           options={{
             title: {
               display: true,
-              text: "Mouthly Expenses",
+              text: "Monthly Expenses",
               fontSize: 20,
             },
             legend: {
