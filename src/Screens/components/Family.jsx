@@ -67,7 +67,7 @@ function Family(props) {
               "family_name",
               res.data["payload"]["family_name"]
             );
-            history.push("/Budgeting/main");
+            history.push("/main");
           } else {
             setState({ ...state, errorMessages: res.data["result"] });
           }
